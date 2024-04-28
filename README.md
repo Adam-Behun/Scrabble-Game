@@ -1,5 +1,7 @@
 # Scrabble Project 
 
+* Note: Working in the Alpha branch on our Alpha assignment
+
 # Authors: 
 Mark Mehta, Luke Giunta, Adam Behun
 
