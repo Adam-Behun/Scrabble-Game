@@ -4,6 +4,7 @@
 */ 
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class BagOfLetters{
 	private ArrayList<Character> letters;
@@ -12,7 +13,11 @@ public class BagOfLetters{
 		this.letters = new ArrayList<>();
 		
 		// initialize the bag of letters
+		for (char c = 'A'; c <= 'Z'; c++) {
+			letters.add(c);
+		}
 		// then shuffle
+		Collections.shuffle(letters);
 	}
 	
 	public char pullLetter() {
