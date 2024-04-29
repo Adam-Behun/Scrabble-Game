@@ -12,7 +12,8 @@ public class WordChecker{
 	public WordChecker() {
 		this.validWords = new ArrayList<>();
 		
-		// few sample words if we need them
+		// few sample words if we need them for testing
+		// in the future should be using a dictiornary
 		validWords.add("example");
 		validWords.add("board--12");
 		validWords.add("Game");
