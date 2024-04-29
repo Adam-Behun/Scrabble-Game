@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ScrabbleGUI extends JFrame{
+public class Driver extends JFrame{
 	private BagOfLetters bagOfLetters;
 	private Board board;
 	private Player player1;
@@ -16,7 +16,7 @@ public class ScrabbleGUI extends JFrame{
 	private JLabel scoreLabel1;
 	private JLabel scoreLabel2;
 	
-	public ScrabbleGUI() {
+	public Driver() {
 		setTitle("Scrabble Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
@@ -45,6 +45,6 @@ public class ScrabbleGUI extends JFrame{
 	}
 	
 	private static void main(String[] args) {
-		new ScrabbleGUI();
+		new Driver();
 	}
 }
