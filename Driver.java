@@ -15,6 +15,7 @@ public class Driver extends JFrame{
 	private Player player2;
 	private JLabel scoreLabel1;
 	private JLabel scoreLabel2;
+	private WordChecker checker;
 	
 	public Driver() {
 		setTitle("Scrabble Game");
@@ -25,6 +26,8 @@ public class Driver extends JFrame{
 		board = new Board();
 		player1 = new Player();
 		player2 = new Player();
+		checker = new WordChecker();
+		checker.isValidBoard(board.getBoard());
 		
 		add(board, BorderLayout.CENTER);
 		
@@ -44,7 +47,7 @@ public class Driver extends JFrame{
 		
 	}
 	
-	private static void main(String[] args) {
+	public static void main(String[] args) {
 		new Driver();
 	}
 }

@@ -2,13 +2,17 @@ import javax.swing.JPanel;
 
 public class Board extends JPanel{
     private char[][] matrix = {
-        {'a', 'b', 'c', 'd'},
-        {'e', 'f', 'g', 'h'},
-        {'i', 'j', 'k', 'l'}
+        {'h', 'e', 'l', 'l','o'},
+        {'o', 'v', 'e', 'n',' '},
+        {'p', 'e', 'n', 's',' '},
+        {'e', 'n', 's', 's',' '}
 };
 ;
 
     public Board() {
-        this.matrix = matrix;
+    
+    }
+    public char[][] getBoard(){
+        return matrix;
     }
 }
