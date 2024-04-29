@@ -18,7 +18,25 @@ public class WordChecker{
 		validWords.add("Game");
 	}
 	
-	public boolean isValidWord(String word) {
-		return validWords.contains(word.toLowerCase());
+	public boolean isValidBoard(char [][] board) {
+		
+		System.out.println("Processing rows:");
+        for (int i = 0; i < board.length; i++) {
+            char[] row = board[i];
+            System.out.print("Row " + i + ": ");
+            for (int j = 0; j < row.length; j++) {
+                System.out.print(row[j] + " ");
+            }
+            System.out.println();
+        }
+		System.out.println("Processing columns:");
+        for (int j = 0; j < board[0].length; j++) {
+            System.out.print("Column " + j + ": ");
+            for (int i = 0; i < board.length; i++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
+        }
+		return true;
+    }
 	}
-}
