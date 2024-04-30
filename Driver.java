@@ -47,7 +47,7 @@ public class Driver extends JFrame{
 		setLocationRelativeTo(null);
 		
 		// need to add the control panel
-		checker.isValidBoard(board.getBoardBad());
+		checker.isValidBoard(board.getMatrix());
 		
 		add(board.getBoard());
 
