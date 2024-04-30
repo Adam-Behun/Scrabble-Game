@@ -74,7 +74,7 @@ public class Board extends JPanel{
 
     }
 
-    public char[][] getBoardBad(){
+    public char[][] getMatrix(){
         return matrix;
     }
 }
