@@ -20,27 +20,48 @@ public class Driver extends JFrame{
 	public Driver() {
 		setTitle("Scrabble Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLayout(new BorderLayout());
+		setLayout(new GridLayout(2,2));
+		setSize(2000,2000);
+		// top L is score, bL is something else, TL is board, bottom left is player's hand
 		
 		bagOfLetters = new BagOfLetters();
 		board = new Board();
+
 		player1 = new Player();
 		player2 = new Player();
 		checker = new WordChecker();
-		checker.isValidBoard(board.getBoard());
 		
-		add(board, BorderLayout.CENTER);
+		JPanel leftPanel = new JPanel(new GridLayout(4, 1));
 		
-		JPanel scorePanel = new JPanel(new GridLayout(1, 2));
 		scoreLabel1 = new JLabel("Player 1 Score: ");
+		scoreLabel1.setPreferredSize(new Dimension(180, 180));
 		scoreLabel2 = new JLabel("Player 2 Score: ");
-		
-		scorePanel.add(scoreLabel1);
-		scorePanel.add(scoreLabel2);
-		add(scorePanel, BorderLayout.NORTH);
+		scoreLabel2.setPreferredSize(new Dimension(180, 180));
+
+		leftPanel.add(scoreLabel1);
+		leftPanel.add(scoreLabel2);
+
+		add(leftPanel);
+		pack();
+		setVisible(true);
+		setLocationRelativeTo(null);
 		
 		// need to add the control panel
+		checker.isValidBoard(board.getBoardBad());
 		
+		add(board.getBoard());
+
+		//space holder for something bottom left
+		JPanel panel1 = new JPanel();
+        panel1.setBackground(Color.BLUE); 
+        panel1.setPreferredSize(new Dimension(200, 200));
+		add(panel1);
+		
+		//space holder for player's hand
+		JPanel panel2 = new JPanel();
+        panel2.setBackground(Color.BLUE); 
+        panel2.setPreferredSize(new Dimension(200, 200));
+		add(panel2);
 	}
 	
 	private void updateTurn() {
