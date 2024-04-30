@@ -8,27 +8,22 @@ import java.util.Arrays;
 import java.util.List;
 
 public class WordChecker{
-	private List<String> validWords;
-      private ArrayList<Character> alph;
-    
 	
+	private List<String> validWords;
+    private ArrayList<Character> alph;
+    		
 	public WordChecker() {
-		private List<String> validWords;
-	      private ArrayList<Character> alph;
-	    
-		
-		public WordChecker() {
-			this.validWords = new ArrayList<>();
+		this.validWords = new ArrayList<>();
 			
-			// few sample words for the alpha version
-			validWords.add("world");
-			validWords.add("hello");
-			validWords.add("Game");
-	        validWords.add("hope");
-	        validWords.add("oven");
-	        validWords.add("even");
-	        validWords.add("lens");
-	        validWords.add("pens");
+		// few sample words for the alpha version
+		validWords.add("world");
+		validWords.add("hello");
+		validWords.add("Game");
+	    validWords.add("hope");
+	    validWords.add("oven");
+	    validWords.add("even");
+	    validWords.add("lens");
+	    validWords.add("pens");
 
          alph = new ArrayList<Character>(Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 
          'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 
