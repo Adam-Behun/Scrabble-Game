@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collections;
 
 public class Driver extends JFrame{
 	private BagOfLetters bagOfLetters;
@@ -46,10 +47,8 @@ public class Driver extends JFrame{
 		setVisible(true);
 		setLocationRelativeTo(null);
 		
-		// need to add the control panel
-		checker.isValidBoard(board.getMatrix());
-		
 		add(board.getBoard());
+		checker.printBoard(board.getMatrix());
 
 		//space holder for something bottom left
 		JPanel panel1 = new JPanel();
@@ -61,8 +60,32 @@ public class Driver extends JFrame{
 		JPanel panel2 = new JPanel();
         panel2.setBackground(Color.BLUE); 
         panel2.setPreferredSize(new Dimension(200, 200));
+		JButton checkButton = new JButton("check the board");
+
+		checkButton.addActionListener(new ActionListener()
+				{
+					public void actionPerformed(ActionEvent ae)
+					{	
+						checker.isValidBoard(board.getMatrix());
+					}
+				});
+				
+		panel2.add(checkButton);
+		JButton printButton = new JButton("print matrix");
+
+		printButton.addActionListener(new ActionListener()
+				{
+					public void actionPerformed(ActionEvent ae)
+					{	
+						checker.printBoard(board.getMatrix());
+					}
+				});
+				
+		panel2.add(printButton);
 		add(panel2);
 	}
+
+	
 	
 	private void updateTurn() {
 		
