@@ -15,7 +15,7 @@ public class WordChecker{
 	public WordChecker() {
 		this.validWords = new ArrayList<>();
 			
-		// few sample words for the alpha version
+		// few sample words for the alpha version, we plan to replace this with a much larger dict file in the future
 		validWords.add("world");
 		validWords.add("hello");
 		validWords.add("Game");
@@ -34,7 +34,7 @@ public class WordChecker{
 	public boolean isValidBoard(char [][] board) {
 
         //checking rows
-		System.out.println("Processing rows:");
+		System.out.println("Checking rows:");
         for (int i = 0; i < board.length; i++) {
             char[] row = board[i];
             System.out.print("Row " + i + ": ");
@@ -43,7 +43,7 @@ public class WordChecker{
         }
 
         //checking columns
-		System.out.println("Processing columns:");
+		System.out.println("Checking columns:");
         for (int j = 0; j < board[0].length; j++) {
             char[] column = new char[board.length];
             System.out.print("Column " + j + ": ");

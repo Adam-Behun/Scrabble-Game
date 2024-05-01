@@ -1,5 +1,12 @@
 /** 
  * Gui code using Java Swing
+ * Note for USe. the Alpah version of the Scrabble game is limited, each of the buttons operated by readign the 
+ * first char from the text field, pressing the button will replace the char their with the one in the test field
+ * the alpha version of our game has the interactive board as explained above, and the functions for printing out the 
+ * letter on the game board and checking the board for legal and ilegal moves. these changes will be printed into your
+ * terminal for the time being, this should be changed in the future.
+ * 
+ * we have work done for our other classes but they are not fully functional in the aplha version 
  * 
 */ 
 
@@ -34,6 +41,7 @@ public class Driver extends JFrame{
 		
 		JPanel leftPanel = new JPanel(new GridLayout(4, 1));
 		
+		//will be used to display scores
 		scoreLabel1 = new JLabel("Player 1 Score: ");
 		scoreLabel1.setPreferredSize(new Dimension(180, 180));
 		scoreLabel2 = new JLabel("Player 2 Score: ");
@@ -56,7 +64,7 @@ public class Driver extends JFrame{
         panel1.setPreferredSize(new Dimension(200, 200));
 		add(panel1);
 		
-		//space holder for player's hand
+		//Hold buttons for adding letters and printing the buttons
 		JPanel panel2 = new JPanel();
         panel2.setBackground(Color.BLUE); 
         panel2.setPreferredSize(new Dimension(200, 200));

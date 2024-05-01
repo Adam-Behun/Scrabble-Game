@@ -8,6 +8,8 @@ import java.util.*;
 public class Board extends JPanel{
     private JPanel Board;
     private JTextField placedTile;
+    
+    //this the matrix that will hold the letters on the game board
     private char[][] matrix = {
         {'h', 'e', 'l', 'l','o',' ', ' ', ' ', ' '},
         {'o', 'v', 'e', 'n',' ',' ', ' ', ' ', ' '},
@@ -24,6 +26,7 @@ public class Board extends JPanel{
    
     public Board() {
         Board = new JPanel(new GridLayout(10,9));
+        // these are images that we plan on using for our gameboard
         String center = "Resources/center.PNG";
         String tile = "Resources/tile.PNG";
         String dl = "Resources/DL.PNG"; 
@@ -31,43 +34,6 @@ public class Board extends JPanel{
         String tl = "Resources/TL.PNG";
         String tw = "Resources/TW.PNG";
 
-       /* Board.add(buttonCreation(dl));
-        Board.add(buttonCreation(dw));
-        Board.add(buttonCreation(center));
-        Board.add(buttonCreation(tile));
-        Board.add(buttonCreation(tl));
-        Board.add(buttonCreation(tw));    
-        Board.add(buttonCreation(dl));
-        Board.add(buttonCreation(dw));
-        Board.add(buttonCreation(tile));
-        Board.add(buttonCreation(tl));
-        Board.add(buttonCreation(tw));     
-        Board.add(buttonCreation(dl));
-        Board.add(buttonCreation(dw));
-        Board.add(buttonCreation(tile));
-        Board.add(buttonCreation(tl));
-        Board.add(buttonCreation(tw));
-        Board.add(buttonCreation(dl));
-        Board.add(buttonCreation(dw));
-        Board.add(buttonCreation(tile));
-        Board.add(buttonCreation(tl));
-        Board.add(buttonCreation(tw));
-        Board.add(buttonCreation(dl));
-        Board.add(buttonCreation(dw));
-        Board.add(buttonCreation(tile));
-        Board.add(buttonCreation(tl));
-        Board.add(buttonCreation(tw));
-        Board.add(buttonCreation(dl));
-        Board.add(buttonCreation(dw));
-        Board.add(buttonCreation(tile));
-        Board.add(buttonCreation(tl));
-        Board.add(buttonCreation(tw));
-        Board.add(buttonCreation(dl));
-        Board.add(buttonCreation(dw));
-        Board.add(buttonCreation(tile));
-        Board.add(buttonCreation(tl));
-        Board.add(buttonCreation(tw));
-        */
 
         for (int i = 0; i < 9; i++) {
             for(int j =0; j < 9; j++){
@@ -90,6 +56,7 @@ public class Board extends JPanel{
     }
 
     private JButton buttonCreation(String path, int row, int column){
+        //sets the size and icon for the buttons
         ImageIcon tempIcon = new ImageIcon(path);
         Image norm = tempIcon.getImage();
         Image resizedImage = norm.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
@@ -104,6 +71,9 @@ public class Board extends JPanel{
         
 
     }
+    //we decided for the sake of readble code to have a implemention of action listener 
+    //this prints out the point pressed on the board, and updates the matrix with the given
+    //character.
     private class ButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
