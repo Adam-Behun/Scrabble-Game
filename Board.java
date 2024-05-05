@@ -90,4 +90,20 @@ public class Board extends JPanel{
     public char[][] getMatrix(){
         return matrix;
     }
+    
+    public void printBoard() {
+    	System.out.println("Current Board:");
+    	for (int i = 0; i < matrix.length; i++) {
+    		for (int j = 0; j < matrix[i].length; j++) {
+    			
+    			// check for null character
+    			if (matrix[i][j] == '\u0000') {
+    				System.out.print('-');
+    			} else {
+    				System.out.print(matrix[i][j]);
+    			}
+    			System.out.println();
+    		}
+    	}
+    }
 }
