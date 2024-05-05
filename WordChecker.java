@@ -93,6 +93,8 @@ public class WordChecker{
 		}
 		
 		return isValid;
+	}
+	
 		
 	
 	
