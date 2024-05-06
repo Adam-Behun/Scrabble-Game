@@ -1,10 +1,11 @@
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashSet;
-import java.util.Set;
 
 public class WordChecker{
 	
-	private Set<String> validWords;
+	private HashSet<String> validWords;
 	
 	public WordChecker() {
 		loadDictionary();
@@ -12,7 +13,15 @@ public class WordChecker{
 				
 	// find a way to change the validWords hashset for a .txt dictionary of english words
 	private void loadDictionary() {
-		validWords = new HashSet<>(Arrays.asList("hello", "world", "java", "game", "something", "verylongword"));
+		try(BufferedReader read = new BufferedReader(new FileReader("Resources/ScrabbleWords.txt"))){
+			String word;
+			while((word = read.readLine())!= null){
+				word =word.trim();
+				validWords.add(word);
+			}	
+		}catch(IOException e){
+			System.err.println("bad file");
+		}
 	}
 
 	public boolean isValidWord(String word) {
