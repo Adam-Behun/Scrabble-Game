@@ -34,91 +34,75 @@ public class Driver extends JFrame{
 		board = new Board();
 		
 		player1 = new Player(bagOfLetters);
-		//player2 = new Player(bagOfLetters);//HOW DO WE KEEP THE SAME BAG OF LETTERS? 
+		player2 = new Player(bagOfLetters);
 
 		checker = new WordChecker();
 		
-							JPanel leftPanel = new JPanel();
-							leftPanel.setPreferredSize(new Dimension(150, 1000));
-							leftPanel.setLayout(new BorderLayout());
-							leftPanel.setBackground(Color.BLUE);
-							// Top right (850x850)
-							JPanel topRightPanel = new JPanel();
-							topRightPanel.setPreferredSize(new Dimension(850, 850));
-							topRightPanel.setLayout(new FlowLayout());
-							topRightPanel.setBackground(Color.RED);
-							// Bottom (850x150)
-							JPanel bottomPanel = new JPanel();
-							bottomPanel.setPreferredSize(new Dimension(850, 150));
-							// Add components to bottomPanel using suitable layout manager
-							bottomPanel.setBackground(Color.black);
-							// Add panels to main frame
+		JPanel leftPanel = new JPanel();
+		leftPanel.setPreferredSize(new Dimension(150, 1000));
+		leftPanel.setLayout(new BorderLayout());
+		leftPanel.setBackground(Color.BLUE);
+		
+		
+		// Top right (850x850)
+		JPanel topRightPanel = new JPanel();
+		topRightPanel.setPreferredSize(new Dimension(850, 850));
+		topRightPanel.setLayout(new FlowLayout());
+		topRightPanel.setBackground(Color.RED);
+		
+		// Bottom (850x150)
+		JPanel bottomPanel = new JPanel();
+		bottomPanel.setPreferredSize(new Dimension(850, 150));
+		// Add components to bottomPanel using suitable layout manager
+		bottomPanel.setBackground(Color.black);
 		
 		add(leftPanel, BorderLayout.WEST);
-
-		topRightPanel.add(board.getBoard());
+		topRightPanel.add(board);
 		add(topRightPanel, BorderLayout.CENTER);						
 		
-				JPanel topPlayerTitle = new JPanel();
-				topPlayerTitle.setPreferredSize(new Dimension(850, 50));
-				//add a title here and what the player is
+		JPanel topPlayerTitle = new JPanel();
+		topPlayerTitle.setPreferredSize(new Dimension(850, 50));
+		//add a title here and what the player is
 
-				JLabel playerTilesGUI = new JLabel();
-				playerTilesGUI.setLayout(new GridLayout(1, 7));
+		JLabel playerTilesGUI = new JLabel();
+		playerTilesGUI.setLayout(new GridLayout(1, 7));
 
-				for (int i = 0; i < 7; i++) {
-					player1.addLetter();
-					playerTilesGUI.add(player1.getTile(i));
-				}
+		for (int i = 0; i < 7; i++) {
+			player1.addLetter();
+			playerTilesGUI.add(player1.getTile(i));
+		}
 				
-				JPanel bottomPlayerHand = new JPanel();
-				bottomPlayerHand.setPreferredSize(new Dimension(850, 100));
-				bottomPlayerHand.add(playerTilesGUI);
-			
-			bottomPanel.add(topPlayerTitle);
-			bottomPanel.add(bottomPlayerHand);
-
-		
+		JPanel bottomPlayerHand = new JPanel();
+		bottomPlayerHand.setPreferredSize(new Dimension(850, 100));
+		bottomPlayerHand.add(playerTilesGUI);
+		bottomPanel.add(topPlayerTitle);
+		bottomPanel.add(bottomPlayerHand);
 		add(bottomPanel, BorderLayout.SOUTH);	
-	
+
+		JButton checkButton = new JButton("Check the board");
+		checkButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent ae){
+				if (checker.isValidBoard(board.getMatrix())) {
+					JOptionPane.showMessageDialog(null, "All words are valid");
+				} else {
+					JOptionPane.showMessageDialog(null, "Some words are not valid");
+				}
+			}
+		});
+		
+		JButton printButton = new JButton("Print matrix");
+		printButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent ae) {
+						board.printBoard();
+					}
+				});
+		
+		topRightPanel.add(checkButton);
+		topRightPanel.add(printButton);
+		
 		pack();
 		setVisible(true);
 		setLocationRelativeTo(null);
-		
-		
-		checker.printBoard(board.getMatrix());
-		
-
-
-		JButton checkButton = new JButton("check the board");
-
-		checkButton.addActionListener(new ActionListener()
-				{
-					public void actionPerformed(ActionEvent ae)
-					{	
-						checker.isValidBoard(board.getMatrix());
-					}
-				});
-				
-		//panel2.add(checkButton);
-		JButton printButton = new JButton("print matrix");
-
-		printButton.addActionListener(new ActionListener()
-				{
-					public void actionPerformed(ActionEvent ae)
-					{	
-						checker.printBoard(board.getMatrix());
-					}
-				});
-				
-		//panel2.add(printButton);
-		//add(panel2);
-	}
-
-	
-	
-	private void updateTurn() {
-		
 	}
 	
 	public static void main(String[] args) {

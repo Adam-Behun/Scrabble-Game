@@ -1,17 +1,18 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import javax.swing.*;
 
 public class BagOfLetters {
     private ArrayList<Tile> tiles;
+    private ImageIcon tileIcon;
 
     public BagOfLetters() {
         this.tiles = new ArrayList<>();
-        // initialize the bag of letters
+        this.tileIcon = new ImageIcon(getClass().getResource("/Resources/tile.PNG"));
+        
         for (char c = 'A'; c <= 'Z'; c++) {
-            tiles.add(new Tile(c));
-            System.out.println(tiles.size());
+            tiles.add(new Tile(c, tileIcon));
         }
-        // then shuffle
         Collections.shuffle(tiles);
     }
 

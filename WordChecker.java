@@ -28,6 +28,7 @@ public class WordChecker{
 	private void loadDictionary() {
 		
 		// set of words serving as an example
+		// will be loading dictionary later
 		validWords.add("world");
 		validWords.add("hello");
 		validWords.add("Game");
@@ -36,9 +37,6 @@ public class WordChecker{
     	validWords.add("even");
     	validWords.add("lens");
     	validWords.add("pens");
-    	
-    	// will be loading dictionary later
-
 	}
 
 	public boolean isValidWord(String word) {
