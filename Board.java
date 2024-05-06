@@ -1,6 +1,3 @@
-// Creates Tile objects with appropriate images
-// and manages the overall board layout
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
@@ -16,24 +13,7 @@ public class Board extends JPanel{
     private char[][] matrix;    
     private ImageIcon centerIcon, tileIcon, dlIcon, dwIcon, tlIcon, twIcon;
     private WordChecker wordChecker = new WordChecker();
-    
-/*    
-    //this the matrix that will hold the letters on the game board
-    private char[][] matrix = {
-        {'h', 'e', 'l', 'l','o',' ', ' ', ' ', ' '},
-        {'o', 'v', 'e', 'n',' ',' ', ' ', ' ', ' '},
-        {'p', 'e', 'n', 's',' ',' ', ' ', ' ', ' '},
-        {'e', 'n', 's', 's',' ',' ', ' ', ' ', ' '},
-        {' ', ' ', ' ', ' ',' ',' ', ' ', ' ', ' '},
-        {' ', ' ', ' ', ' ',' ',' ', ' ', ' ', ' '},
-        {' ', ' ', ' ', ' ',' ',' ', ' ', ' ', ' '},
-        {' ', ' ', ' ', ' ',' ',' ', ' ', ' ', ' '},
-        {' ', ' ', ' ', ' ',' ',' ', ' ', ' ', ' '}
-        
-};
-;
-*/
-   
+       
     public Board() {
     	loadImages();
     	setLayout(new GridLayout(15,15));

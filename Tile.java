@@ -1,6 +1,3 @@
-// Handles the config off individual tiles
-// as well as user interactions
-
 import java.awt.*;
 import javax.swing.*;
 
@@ -8,9 +5,7 @@ public class Tile extends JButton {
     private char charVal;
     private ImageIcon bgImage;
     private static final Font font = new Font("Arial", Font.BOLD, 33);
-    // private JLabel stringVal;  
-    // private int scoreVal; // later on 
-
+ 
     public Tile(char charVal, ImageIcon bgImage){
     	super();
     	this.bgImage = bgImage;

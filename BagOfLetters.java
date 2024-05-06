@@ -20,8 +20,7 @@ public class BagOfLetters {
         if (!tiles.isEmpty()) {
             return tiles.remove(0);
         } else {
-            // Handle empty bag scenario
-            return null; // or throw an exception
+            return null;
         }
     }
 

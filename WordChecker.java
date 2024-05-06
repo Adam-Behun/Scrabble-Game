@@ -1,8 +1,3 @@
-/** 
- * Working in Beta: small set of testing words
- * Next step: add a dictionary file .txt in loadDictionary method
-*/ 
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,15 +9,8 @@ public class WordChecker{
 	public WordChecker() {
 		loadDictionary();
 	}
-
-		
-/*
-         alph = new ArrayList<Character>(Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 
-         'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 
-         'w', 'x', 'y', 'z'));
-*/
-		
-	
+				
+	// find a way to change the validWords hashset for a .txt dictionary of english words
 	private void loadDictionary() {
 		validWords = new HashSet<>(Arrays.asList("hello", "world", "java", "game", "something", "verylongword"));
 	}
@@ -82,11 +70,13 @@ public class WordChecker{
 	}
 }
 
-	
-	
-		
-	
-	
+/*
+	alph = new ArrayList<Character>(Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 
+	'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 
+	'w', 'x', 'y', 'z'));
+
+*/
+
 	
 /*    
     public Boolean isVaildWord(char[] words){

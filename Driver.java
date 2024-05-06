@@ -1,15 +1,3 @@
-/** 
- * Gui code using Java Swing
- * Note for USe. the Alpah version of the Scrabble game is limited, each of the buttons operated by readign the 
- * first char from the text field, pressing the button will replace the char their with the one in the test field
- * the alpha version of our game has the interactive board as explained above, and the functions for printing out the 
- * letter on the game board and checking the board for legal and ilegal moves. these changes will be printed into your
- * terminal for the time being, this should be changed in the future.
- * 
- * we have work done for our other classes but they are not fully functional in the aplha version 
- * 
-*/ 
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,7 +18,6 @@ public class Driver extends JFrame{
 		setTitle("Scrabble Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1000,1000);
-		// top L is score, bL is something else, TL is board, bottom left is player's hand
 		
 		bagOfLetters = new BagOfLetters();
 		board = new Board();
@@ -102,6 +89,8 @@ public class Driver extends JFrame{
 			new Driver();
 		}
 }
+
+
 
 /*		
 		

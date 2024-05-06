@@ -1,8 +1,3 @@
-/** 
- * Calculates the scores for words placed on the board
- * Understand different scoring multipliers 
-*/ 
-
 public class PointCalculator{
 	
 	// how to do multipliers?
