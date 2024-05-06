@@ -8,6 +8,7 @@ public class Driver extends JFrame{
 	private Board board;
 	private Player player1;
 	private Player player2;
+	private Player currentPlayer; // Not sure if this is the right design
 	private JPanel player1Panel;
 	private JPanel player2Panel;
 	private JLabel scoreLabel1;
@@ -24,37 +25,42 @@ public class Driver extends JFrame{
 		
 		player1 = new Player(bagOfLetters);
 		player2 = new Player(bagOfLetters);
-		checker = new WordChecker();
+		currentPlayer = player1;
 		
+		setupGUI();
+	}
+	
+	private void setupGUI() {
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		player1Panel = new JPanel(new BorderLayout());
 		player2Panel = new JPanel(new BorderLayout());
 		
-		// Display player1's hand
-		JLabel player1Label = new JLabel("Player1's hand:");
-		player1Label.setForeground(Color.WHITE);
-		player1Label.setFont(new Font("Arial", Font.BOLD, 16));
+		setupPlayerPanel(player1Panel, "Player1's hand:", player1);
+		setupPlayerPanel(player2Panel, "Player2's hand:", player2);
 		
-		player1Panel.add(player1Label, BorderLayout.NORTH);
-		player1Panel.add(player1, BorderLayout.CENTER);
-		player1Panel.setBackground(Color.BLACK);
-
-		// Display player2's hand
-		JLabel player2Label = new JLabel("Player2's hand:");
-		player2Label.setForeground(Color.WHITE);
-		player2Label.setFont(new Font("Arial", Font.BOLD, 16));
-		
-		player2Panel.add(player2Label, BorderLayout.NORTH);
-		player2Panel.add(player2, BorderLayout.CENTER);
-		player2Panel.setBackground(Color.BLACK);
-		
-		// Layout config
 		mainPanel.add(board, BorderLayout.CENTER);
 		mainPanel.add(player1Panel, BorderLayout.NORTH);
 		mainPanel.add(player2Panel, BorderLayout.SOUTH);
 		
-		add(mainPanel);
+		addControlPanel(mainPanel);
 		
+		add(mainPanel);		
+		pack();
+		setVisible(true);
+		setLocationRelativeTo(null);
+	}
+	
+	private void setupPlayerPanel(JPanel panel, String label, Player player) {
+		JLabel playerLabel = new JLabel(label);
+		playerLabel.setForeground(Color.WHITE);
+		playerLabel.setFont(new Font("Arial", Font.BOLD, 16));
+		
+		panel.add(playerLabel, BorderLayout.NORTH);
+		panel.add(player, BorderLayout.CENTER);
+		panel.setBackground(Color.BLACK);
+	}
+	
+	private void addControlPanel(JPanel mainPanel) {
 		JButton checkButton = new JButton("Check the board");
 		checkButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae){
@@ -79,11 +85,29 @@ public class Driver extends JFrame{
 		controlPanel.add(printButton);
 		
 		mainPanel.add(controlPanel, BorderLayout.EAST);
+	}	
 		
-		pack();
-		setVisible(true);
-		setLocationRelativeTo(null);
+	
+	private void togglePlayer() {
+		if (currentPlayer == player1) {
+			currentPlayer = player2;
+		} else {
+			currentPlayer = player1;
+		}
+		updatePlayerDisplay();
 	}
+	
+	private void updatePlayerDisplay() {
+		if (currentPlayer == player1) {
+			player1Panel.setBackground(Color.GREEN);
+			player2Panel.setBackground(Color.GRAY);
+		} else {
+			player2Panel.setBackground(Color.GREEN);
+			player1Pane1.setBackground(Color.GRAY);			
+		}
+	}
+	
+	
 		
 		public static void main(String[] args) {
 			new Driver();

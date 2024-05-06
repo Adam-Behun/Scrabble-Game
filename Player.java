@@ -22,6 +22,30 @@ public class Player extends JPanel{
 		}
 	}
 	
+	public boolean hasTile(char charVal) {
+		for (Tile tile : tilesInHand) {
+			if (tile.getChar() == charVal) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void useTile(char charVal) {
+		Tile toRemove = null;
+		for (Tile tile : tilesInHand) {
+			if (tile.getChar() == charVal) {
+				toRemove = tile;
+				break;
+			}
+		}
+		
+		if (toRemove != null) {
+			tilesInHand.remove(toRemove);
+			updateHandDisplay();
+		}
+	}
+	
 	public void addLetter() {
 		Tile tile = bagOfLetters.pullLetter();
 		if (tile != null) {

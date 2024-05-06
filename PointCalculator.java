@@ -1,6 +1,4 @@
 public class PointCalculator{
-	
-	// how to do multipliers?
 	public int calculatePoints(String word, int[] multipliers) {
 		int score = 0;
 		for (int i = 0; i < word.length(); i++) {
@@ -10,7 +8,6 @@ public class PointCalculator{
 	}
 	
 	private int getLetterValue(char letter) {
-		// preliminary
 		return 1;
 	}
 }
