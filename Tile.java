@@ -13,20 +13,14 @@ public class Tile extends JButton {
 
     public Tile(char charVal, ImageIcon bgImage){
     	super();
-    	if (bgImage == null) {
-    		System.out.println("Bg img is null");
-    		bgImage = new ImageIcon();
-    	}
     	this.bgImage = bgImage;
     	setIcon(bgImage);
-    	
-        this.charVal=charVal;
-        this.bgImage = bgImage;
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(55, 55));
-        setText(Character.toString(charVal));
         setFont(font);
-        setIcon(bgImage);
+        setText(Character.toString(charVal));
+        setHorizontalTextPosition(JButton.CENTER);
+        setVerticalTextPosition(JButton.CENTER);
         addActionListener(e -> updateTile());
     }
     
@@ -35,6 +29,9 @@ public class Tile extends JButton {
     	if (input != null && input.length() == 1 && Character.isLetter(input.charAt(0))) {
     		charVal = Character.toUpperCase(input.charAt(0)); // update the char value
     		setText(String.valueOf(charVal)); // update the displayed letter
+    	} else {
+    		setText("");
+    		charVal = '\u0000';
     	}
     }
     
@@ -43,6 +40,14 @@ public class Tile extends JButton {
     	super.paintComponent(g);
     	if (bgImage != null) {
     		g.drawImage(bgImage.getImage(), 0, 0, getWidth(), getHeight(), this);
+    		g.setColor(Color.BLACK);
+    		g.setFont(font);
+    		
+    		// draws text over the icon at its center
+    		FontMetrics fm = g.getFontMetrics();
+    		int x = (getWidth() - fm.stringWidth(getText())) /2;
+    		int y = (getHeight() + fm.getHeight()) / 2 - fm.getDescent();
+    		g.drawString(getText(), x, y);
     	}
     }
 }
