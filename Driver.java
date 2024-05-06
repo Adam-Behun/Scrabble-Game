@@ -44,14 +44,22 @@ public class Driver extends JFrame{
 		player2Panel = new JPanel(new BorderLayout());
 		
 		// Display player1's hand
-		player1Panel.add(new JLabel("Player1's hand:"), BorderLayout.NORTH);
-		player1Panel.add(player1, BorderLayout.CENTER);
-		player1Panel.setBackground(Color.BLUE);
+		JLabel player1Label = new JLabel("Player1's hand:");
+		player1Label.setForeground(Color.WHITE);
+		player1Label.setFont(new Font("Arial", Font.BOLD, 16));
 		
+		player1Panel.add(player1Label, BorderLayout.NORTH);
+		player1Panel.add(player1, BorderLayout.CENTER);
+		player1Panel.setBackground(Color.BLACK);
+
 		// Display player2's hand
-		player2Panel.add(new JLabel("Player2's hand:"), BorderLayout.NORTH);
+		JLabel player2Label = new JLabel("Player2's hand:");
+		player2Label.setForeground(Color.WHITE);
+		player2Label.setFont(new Font("Arial", Font.BOLD, 16));
+		
+		player2Panel.add(player2Label, BorderLayout.NORTH);
 		player2Panel.add(player2, BorderLayout.CENTER);
-		player2Panel.setBackground(Color.BLUE);
+		player2Panel.setBackground(Color.BLACK);
 		
 		// Layout config
 		mainPanel.add(board, BorderLayout.CENTER);
