@@ -20,6 +20,8 @@ public class Driver extends JFrame{
 	private Board board;
 	private Player player1;
 	private Player player2;
+	private JPanel player1Panel;
+	private JPanel player2Panel;
 	private JLabel scoreLabel1;
 	private JLabel scoreLabel2;
 	private WordChecker checker;
@@ -35,8 +37,65 @@ public class Driver extends JFrame{
 		
 		player1 = new Player(bagOfLetters);
 		player2 = new Player(bagOfLetters);
-
 		checker = new WordChecker();
+		
+		JPanel mainPanel = new JPanel(new BorderLayout());
+		player1Panel = new JPanel(new BorderLayout());
+		player2Panel = new JPanel(new BorderLayout());
+		
+		// Display player1's hand
+		player1Panel.add(new JLabel("Player1's hand:"), BorderLayout.NORTH);
+		player1Panel.add(player1, BorderLayout.CENTER);
+		player1Panel.setBackground(Color.BLUE);
+		
+		// Display player2's hand
+		player2Panel.add(new JLabel("Player2's hand:"), BorderLayout.NORTH);
+		player2Panel.add(player2, BorderLayout.CENTER);
+		player2Panel.setBackground(Color.BLUE);
+		
+		// Layout config
+		mainPanel.add(board, BorderLayout.CENTER);
+		mainPanel.add(player1Panel, BorderLayout.NORTH);
+		mainPanel.add(player2Panel, BorderLayout.SOUTH);
+		
+		add(mainPanel);
+		
+		JButton checkButton = new JButton("Check the board");
+		checkButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent ae){
+				if (checker.isValidBoard(board.getMatrix())) {
+					JOptionPane.showMessageDialog(null, "All words are valid");
+				} else {
+					JOptionPane.showMessageDialog(null, "Some words are not valid");
+				}
+			}
+		});
+		
+		
+		JButton printButton = new JButton("Print matrix");
+		printButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent ae) {
+						board.printBoard();
+					}
+				});
+		
+		JPanel controlPanel = new JPanel();
+		controlPanel.add(checkButton);
+		controlPanel.add(printButton);
+		
+		mainPanel.add(controlPanel, BorderLayout.EAST);
+		
+		pack();
+		setVisible(true);
+		setLocationRelativeTo(null);
+	}
+		
+		public static void main(String[] args) {
+			new Driver();
+		}
+}
+
+/*		
 		
 		JPanel leftPanel = new JPanel();
 		leftPanel.setPreferredSize(new Dimension(150, 1000));
@@ -109,3 +168,4 @@ public class Driver extends JFrame{
 		new Driver();
 	}
 }
+*/

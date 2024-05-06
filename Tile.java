@@ -50,7 +50,13 @@ public class Tile extends JButton {
     		g.drawString(getText(), x, y);
     	}
     }
+    
+    public char getChar() {
+    	return charVal;
+    }
+
 }
+
 
 
 /*        

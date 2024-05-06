@@ -3,6 +3,7 @@
  * Next step: add a dictionary file .txt in loadDictionary method
 */ 
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,32 +12,19 @@ public class WordChecker{
 	private Set<String> validWords;
 	
 	public WordChecker() {
-		this.validWords = new HashSet<>();
 		loadDictionary();
+	}
 
 		
-		/*
+/*
          alph = new ArrayList<Character>(Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 
          'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 
          'w', 'x', 'y', 'z'));
-        */
+*/
 		
-	
-	}
-
 	
 	private void loadDictionary() {
-		
-		// set of words serving as an example
-		// will be loading dictionary later
-		validWords.add("world");
-		validWords.add("hello");
-		validWords.add("Game");
-    	validWords.add("hope");
-    	validWords.add("oven");
-    	validWords.add("even");
-    	validWords.add("lens");
-    	validWords.add("pens");
+		validWords = new HashSet<>(Arrays.asList("hello", "world", "java", "game", "something", "verylongword"));
 	}
 
 	public boolean isValidWord(String word) {
@@ -67,25 +55,25 @@ public class WordChecker{
 	}
 	
 	private boolean checkValidWordsInLine(char[] line) {
-		String word = "";	// use StringBuilder if issues here 
+		StringBuilder word = new StringBuilder(); 
 		boolean isValid = true;
 		
 		for (char c : line) {
 			if (Character.isLetter(c)) {
-				word += c;
+				word.append(c);
 			} else {
 				if (word.length() > 0) {
-					if (!validWords.contains(word.toLowerCase())) {
+					if (!validWords.contains(word.toString().toLowerCase())) {
 						System.out.println(word + " is not a valid word.");
 						isValid = false;
 					}
-					word = "";
+					word.setLength(0);
 					}
 				}
 			}
 		
 		// check last word in the line if not checked
-		if (word.length() > 0 && !validWords.contains(word.toLowerCase())) {
+		if (word.length() > 0 && !validWords.contains(word.toString().toLowerCase())) {
 			System.out.println(word + " is not a valid word.");
 			isValid = false;
 		}

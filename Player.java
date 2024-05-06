@@ -4,31 +4,53 @@
 */ 
 
 import java.util.ArrayList;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 
 public class Player extends JPanel{
 	private int score;
 	final private ArrayList<Tile> tilesInHand;
-	final private BagOfLetters BagOfLetters;
+	final private BagOfLetters bagOfLetters;
 	
-	public Player(BagOfLetters letterBag) {
+	public Player(BagOfLetters bagOfLetters) {
+		this.bagOfLetters = bagOfLetters;
 		this.score = 0;
-		this.tilesInHand = new ArrayList<Tile>();
-		this.BagOfLetters = letterBag;
+		this.tilesInHand = new ArrayList<>();
+		drawInitialTiles();
+		updateHandDisplay();
 	}
-	//update letter bag
-
+	
+	// each player starts with 7 tiles
+	private void drawInitialTiles() {
+		for (int i = 0; i < 7; i++) {
+			addLetter();
+		}
+	}
+	
 	public void addLetter() {
-			this.tilesInHand.add(this.BagOfLetters.pullLetter()); // when is this. needed?
+		Tile tile = bagOfLetters.pullLetter();
+		if (tile != null) {
+			tilesInHand.add(tile);
+		}
+	}
+	
+	private void updateHandDisplay() {
+		this.removeAll();
+		this.setLayout(new FlowLayout());
+		for (Tile tile : tilesInHand) {
+			this.add(tile);
+		}
+		this.revalidate();
+		this.repaint();
 	}
 	
 	public Tile getTile(int index){
 		return this.tilesInHand.get(index);
 	}
 	
-	//display hand
-	public void removeLetter(char letter) {
-		//this.tilesInHand.remove(); FIX THIS
+	public void removeLetter(Tile tile) {
+		tilesInHand.remove(tile);
+		updateHandDisplay();
 	}
 	
 	public int getScore() {
@@ -39,5 +61,7 @@ public class Player extends JPanel{
 		score += points;
 	}
 
-	
+	public ArrayList<Tile> getTilesInHand(){
+		return tilesInHand;
+	}
 }
