@@ -29,20 +29,22 @@ public class Player extends JPanel{
 			}
 		}
 		return false;
+//		boolean hasTile =  tilesInHand.stream().anyMatch(tile -> tile.getChar() == charVal);
+//		System.out.println("Checking if player has tile '" + charVal + "': " + hasTile);
+//		return hasTile;
 	}
 	
 	public void useTile(char charVal) {
-		Tile toRemove = null;
-		for (Tile tile : tilesInHand) {
-			if (tile.getChar() == charVal) {
-				toRemove = tile;
-				break;
-			}
-		}
-		
+		Tile toRemove = tilesInHand.stream()
+									.filter(t -> t.getChar() == charVal)
+									.findFirst()
+									.orElse(null);
 		if (toRemove != null) {
 			tilesInHand.remove(toRemove);
+			System.out.println("Tile '" + charVal + "' used and removed from hand.");
 			updateHandDisplay();
+		} else {
+			System.out.println("Failed to remove tile: " + charVal + " because it was not found in hand");
 		}
 	}
 	

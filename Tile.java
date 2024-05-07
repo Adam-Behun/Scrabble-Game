@@ -4,11 +4,16 @@ import javax.swing.*;
 public class Tile extends JButton {
     private char charVal;
     private ImageIcon bgImage;
+    private int row;
+    private int col;
     private static final Font font = new Font("Arial", Font.BOLD, 33);
  
-    public Tile(char charVal, ImageIcon bgImage){
+    public Tile(char charVal, ImageIcon bgImage, int row, int col){
     	super();
     	this.bgImage = bgImage;
+    	this.charVal = charVal;
+    	this.row = row;
+    	this.col = col;
     	setIcon(bgImage);
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(55, 55));
@@ -19,14 +24,23 @@ public class Tile extends JButton {
         addActionListener(e -> updateTile());
     }
     
+    public int getRow() {
+    	return row;
+    }
+    
+    public int getCol() {
+    	return col;
+    }
+
+
     public void updateTile() {
     	String input = JOptionPane.showInputDialog(this, "Enter a letter:");
     	if (input != null && input.length() == 1 && Character.isLetter(input.charAt(0))) {
-    		charVal = Character.toUpperCase(input.charAt(0)); // update the char value
-    		setText(String.valueOf(charVal)); // update the displayed letter
+    		this.charVal = Character.toUpperCase(input.charAt(0)); // update the char value
+    		setText(String.valueOf(this.charVal)); // update the displayed letter
     	} else {
     		setText("");
-    		charVal = '\u0000';
+    		this.charVal = '\u0000';
     	}
     }
     

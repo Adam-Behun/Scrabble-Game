@@ -54,7 +54,7 @@ public class Board extends JPanel{
     		for (int j = 0; j < 15; j++) {
     			    			
     			ImageIcon icon = selectIcon(i, j);
-    			tiles[i][j] = new Tile(' ', icon);    				
+    			tiles[i][j] = new Tile(' ', icon, i, j);    				
     			
     			// inner class requires local variables to be final
     			final int finalI = i;
@@ -70,21 +70,33 @@ public class Board extends JPanel{
     		}
     	}
     
-    public void placeTile(int row, int col, char letter) {
-    	matrix[row][col] = letter;
-    	tiles[row][col].setText(String.valueOf(letter));
+    public boolean placeTile(int row, int col, char letter) {
+    	System.out.println("Attemtping to update position (" + row + ", " + col + ")");
+    	if (matrix[row][col] == ' ') {
+    		matrix[row][col] = letter;
+    		tiles[row][col].setText(String.valueOf(letter));
     	
-    	// check for horizontal and vertical words
-    	String horizontalWord = extractWord(matrix[row]);
-    	String verticalWord = extractWord(getColumn(matrix, col));
-    	
-    	
-    	// improve wordchecker
-    	if (!horizontalWord.isEmpty() && wordChecker.isValidWord(horizontalWord)) {
-    		System.out.println("Horizontal word: " + horizontalWord + " is valid.");
-    	} 
-    	if (!verticalWord.isEmpty() && wordChecker.isValidWord(verticalWord)){
-    		System.out.println("Vertical word: " + verticalWord + " is valid.");	
+    		System.out.println("Placed " + letter + " at (" + row + ", " + col + ")");
+    		
+    		String horizontalWord = extractWord(matrix[row]);
+    		String verticalWord = extractWord(getColumn(matrix, col));
+    		
+    		boolean horizontalValid = horizontalWord.isEmpty() || wordChecker.isValidWord(horizontalWord);
+    		boolean verticalValid = verticalWord.isEmpty() || wordChecker.isValidWord(verticalWord);
+    		
+        	if (horizontalValid && verticalValid) {
+        		System.out.println("Move valid: Placed '" + letter + "' at (" + row + ", " + col + ")");
+        		return true;
+        	} else {
+        		matrix[row][col] = ' ';
+        		tiles[row][col].setText("");
+        		if (!horizontalValid) System.out.println("Invalid horizontal word" + horizontalWord);
+        		if (!verticalValid) System.out.println("Invalid vertical word" + verticalWord);
+        		return false;
+        	}
+    	} else {
+            System.out.println("Tile position (" + row + ", " + col + ") already occupied.");
+    		return false;
     	}
     }
     
@@ -128,6 +140,10 @@ public class Board extends JPanel{
     
 	public char[][] getMatrix(){
 		return matrix;
+	}
+	
+	public Tile[][] getTiles(){
+		return tiles;
 	}
 
 

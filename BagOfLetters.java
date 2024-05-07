@@ -11,7 +11,7 @@ public class BagOfLetters {
         this.tileIcon = new ImageIcon(getClass().getResource("/Resources/tile.PNG"));
         
         for (char c = 'A'; c <= 'Z'; c++) {
-            tiles.add(new Tile(c, tileIcon));
+            tiles.add(new Tile(c, tileIcon, -1, -1));
         }
         Collections.shuffle(tiles);
     }
