@@ -54,7 +54,8 @@ public class Board extends JPanel{
     		for (int j = 0; j < 15; j++) {
     			    			
     			ImageIcon icon = selectIcon(i, j);
-    			tiles[i][j] = new Tile(' ', icon, i, j);    				
+    			tiles[i][j] = new Tile(' ', icon, 0, i, j);    	
+				matrix[i][j] = ' ';			
     			
     			// inner class requires local variables to be final
     			final int finalI = i;
@@ -77,8 +78,9 @@ public class Board extends JPanel{
     		tiles[row][col].setText(String.valueOf(letter));
     	
     		System.out.println("Placed " + letter + " at (" + row + ", " + col + ")");
+			return true;
     		
-    		String horizontalWord = extractWord(matrix[row]);
+    		/*String horizontalWord = extractWord(matrix[row]);
     		String verticalWord = extractWord(getColumn(matrix, col));
     		
     		boolean horizontalValid = horizontalWord.isEmpty() || wordChecker.isValidWord(horizontalWord);
@@ -93,7 +95,7 @@ public class Board extends JPanel{
         		if (!horizontalValid) System.out.println("Invalid horizontal word" + horizontalWord);
         		if (!verticalValid) System.out.println("Invalid vertical word" + verticalWord);
         		return false;
-        	}
+        	}*/
     	} else {
             System.out.println("Tile position (" + row + ", " + col + ") already occupied.");
     		return false;

@@ -1,14 +1,15 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class WordChecker{
 	
-	private HashSet<String> validWords;
+	private ArrayList<String> validWords;
 	
 	public WordChecker() {
-		validWords = new HashSet<String> validWords;
+		validWords = new ArrayList<String>();
 		loadDictionary();
 	}
 				
@@ -16,6 +17,7 @@ public class WordChecker{
 	private void loadDictionary() {
 		try(BufferedReader read = new BufferedReader(new FileReader("Resources/ScrabbleWords.txt"))){
 			String word;
+			int count = 0;
 			while((word = read.readLine())!= null){
 				word =word.trim();
 				validWords.add(word);
@@ -60,7 +62,7 @@ public class WordChecker{
 			if (Character.isLetter(c)) {
 				word.append(c);
 			} else {
-				if (word.length() > 0) {
+				if (word.length() > 1) {
 					if (!validWords.contains(word.toString().toLowerCase())) {
 						System.out.println(word + " is not a valid word.");
 						isValid = false;
@@ -71,7 +73,7 @@ public class WordChecker{
 			}
 		
 		// check last word in the line if not checked
-		if (word.length() > 0 && !validWords.contains(word.toString().toLowerCase())) {
+		if (word.length() > 1 && !validWords.contains(word.toString().toLowerCase())) {
 			System.out.println(word + " is not a valid word.");
 			isValid = false;
 		}

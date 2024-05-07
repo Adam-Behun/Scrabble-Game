@@ -6,14 +6,33 @@ public class Tile extends JButton {
     private ImageIcon bgImage;
     private int row;
     private int col;
+	private int point;
     private static final Font font = new Font("Arial", Font.BOLD, 33);
  
-    public Tile(char charVal, ImageIcon bgImage, int row, int col){
+    public Tile(char charVal, ImageIcon bgImage,int point, int row, int col){
     	super();
     	this.bgImage = bgImage;
     	this.charVal = charVal;
     	this.row = row;
     	this.col = col;
+		this.point = point;
+    	setIcon(bgImage);
+        setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(55, 55));
+        setFont(font);
+        setText(Character.toString(charVal));
+        setHorizontalTextPosition(JButton.CENTER);
+        setVerticalTextPosition(JButton.CENTER);
+        addActionListener(e -> updateTile());
+    }
+
+	public Tile(char charVal, ImageIcon bgImage,int point){
+    	super();
+    	this.bgImage = bgImage;
+    	this.charVal = charVal;
+    	this.row = 0;
+    	this.col = 0;
+		this.point = point;
     	setIcon(bgImage);
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(55, 55));
@@ -34,7 +53,7 @@ public class Tile extends JButton {
 
 
     public void updateTile() {
-    	String input = JOptionPane.showInputDialog(this, "Enter a letter:");
+    	String input = JOptionPane.showInputDialog(this, "Please Confirm Letter:");
     	if (input != null && input.length() == 1 && Character.isLetter(input.charAt(0))) {
     		this.charVal = Character.toUpperCase(input.charAt(0)); // update the char value
     		setText(String.valueOf(this.charVal)); // update the displayed letter

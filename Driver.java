@@ -26,6 +26,7 @@ public class Driver extends JFrame{
 		player1 = new Player(bagOfLetters);
 		player2 = new Player(bagOfLetters);
 		currentPlayer = player1;
+		checker = new WordChecker();
 		
 		setupGUI();
 		updatePlayerDisplay();
@@ -117,7 +118,7 @@ public class Driver extends JFrame{
 	
 	private void handleTilePlacement(Tile tile) {
 		if (tile.getChar() == ' ') {
-			String input = JOptionPane.showInputDialog(this, "Enter a tile character: ");
+			String input = JOptionPane.showInputDialog(this, "Please Enter Title From Hand");
 			if (input != null && input.length() == 1) {
 				 char tileChar = Character.toUpperCase(input.charAt(0));
 				 System.out.println("Attempting to place: " + tileChar);
