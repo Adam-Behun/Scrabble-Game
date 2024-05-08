@@ -1,6 +1,12 @@
-*
-!*.java
+*.class
+.metadata/
+.vscode/
 
+
+!*.java
+!*.gitignore
 !/Resources/
 !/Resources/*.png
 !/Resources/*.txt
+!*.pdf
+!*.md
