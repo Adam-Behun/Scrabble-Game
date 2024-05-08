@@ -53,6 +53,7 @@ public class Player extends JPanel{
 		if (tile != null) {
 			tilesInHand.add(tile);
 		}
+		updateHandDisplay();
 	}
 	
 	private void updateHandDisplay() {
@@ -84,5 +85,8 @@ public class Player extends JPanel{
 
 	public ArrayList<Tile> getTilesInHand(){
 		return tilesInHand;
+	}
+	public int getHandSize(){
+		return tilesInHand.size();
 	}
 }

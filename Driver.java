@@ -149,6 +149,20 @@ public class Driver extends JFrame{
 	}
 	
 	private void changeTurn() {
+		if (currentPlayer == player1){
+			int temp = player1.getHandSize();
+			for(int i = 0; i< 7 - temp; i++){
+				player1.addLetter();
+			}
+		}
+		else{
+			int temp = player2.getHandSize();
+			for(int i = 0; i < 7 - temp; i++){
+				player2.addLetter();
+		}
+	
+	}
+	pack();
 		currentPlayer = (currentPlayer == player1) ? player2 : player1;
 		updatePlayerDisplay();
 		System.out.println("Turn switched to: " + (currentPlayer == player1 ? "Player 1" : "Player 2"));
