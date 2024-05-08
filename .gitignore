@@ -1,0 +1,6 @@
+*
+!*.java
+
+!/Resources/
+!/Resources/*.png
+!/Resources/*.txt
